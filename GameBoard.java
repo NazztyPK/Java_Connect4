@@ -71,35 +71,34 @@ public class GameBoard
    /******************************************
    *  Function to input player play on Board *
    *******************************************/
-   public boolean inputBoard(int columnInput, boolean turn)
+   public void inputBoard(int columnInput)
    {
-       int colNum=this.column1;
+       int colNum = this.column1;
        columnInput--;
        
        //make sure only 1 - 7(0,6) can be inputted
        if(columnInput >= 0 && columnInput < 7)
        {
           //let colNum be the number to count for column capacity
-          if(columnInput == 1 || columnInput == 0)
+          if(columnInput == 0)
             colNum = this.column1;
-          else if(columnInput == 2)
+          else if(columnInput == 1)
             colNum = this.column2;
-          else if(columnInput == 3)
+          else if(columnInput == 2)
             colNum = this.column3;
-          else if(columnInput == 4)
+          else if(columnInput == 3)
             colNum = this.column4;
-          else if(columnInput == 5)
+          else if(columnInput == 4)
             colNum = this.column5;
-          else if(columnInput == 6)
+          else if(columnInput == 5)
             colNum = this.column6;
-          else if(columnInput == 7)
+          else if(columnInput == 6)
             colNum = this.column7; 
           
           //if statement will check capacity of the column
           if(colNum < 0)
             {
             System.out.println("There is no more room in the column. \nPlease enter a valid move.");
-            return turn;
             }
           //if there is capacity then it will input valid move
           else
@@ -111,27 +110,23 @@ public class GameBoard
                {
                   if(columnInput == j && colNum == i) //will find the right column(columnInput/j) and row(colNum/i)
                   {
-                     if(turn) 
-                     {
+                     
+                     this.board[i][j] = " H ";
                      //Subtract Column number, so we know what row the next number will be
-                     if(columnInput == 1 || columnInput == 0)
-                        {
+                     if(columnInput == 0)
                         this.column1--;
-                        return !turn;
-                        }
-                     else if(columnInput == 2)
+                     else if(columnInput == 1)
                         this.column2--;
-                     else if(columnInput == 3)
+                     else if(columnInput == 2)
                         this.column3--;
-                     else if(columnInput == 4)
+                     else if(columnInput == 3)
                         this.column4--;
-                     else if(columnInput == 5)
+                     else if(columnInput == 4)
                         this.column5--;
-                     else if(columnInput == 6)
+                     else if(columnInput == 5)
                         this.column6--;
-                     else if(columnInput == 7)
-                        this.column7--;
-                    }                
+                     else if(columnInput == 6)
+                        this.column7--;             
                   }
                }
             }//end of for loop to interate board grid

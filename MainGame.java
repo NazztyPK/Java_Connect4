@@ -17,7 +17,7 @@ class MainGame {
    boolean done = false;
    
    //boolean to see who's turn it is
-   boolean turn = true;
+   //boolean turn = true;
    
    //do while loop for game continuing until done
    do
@@ -26,7 +26,7 @@ class MainGame {
    System.out.println("Where do you want to move?");  //ask for move
    String userString = scanner.nextLine();            //scans in user input for move
    int userInt = Integer.parseInt(userString);        //parses String into Int
-   gb.inputBoard(userInt,turn);                       //input user input
+   gb.inputBoard(userInt);                //input user input
    
    }while(!done);
    
