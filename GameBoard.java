@@ -71,7 +71,7 @@ public class GameBoard
    /******************************************
    *  Function to input player play on Board *
    *******************************************/
-   public void inputBoard(int columnInput)
+   public boolean inputBoard(int columnInput, boolean turn)
    {
        int colNum = this.column1;
        columnInput--;
@@ -99,6 +99,7 @@ public class GameBoard
           if(colNum < 0)
             {
             System.out.println("There is no more room in the column. \nPlease enter a valid move.");
+            return turn;   //return turn when invalid move
             }
           //if there is capacity then it will input valid move
           else
@@ -111,7 +112,11 @@ public class GameBoard
                   if(columnInput == j && colNum == i) //will find the right column(columnInput/j) and row(colNum/i)
                   {
                      
-                     this.board[i][j] = " H ";
+                     if(turn)                      //true when player 1 move
+                        this.board[i][j] = " 1 ";
+                     else                          //false when player two move
+                        this.board[i][j] = " 2 ";
+                     
                      //Subtract Column number, so we know what row the next number will be
                      if(columnInput == 0)
                         this.column1--;
@@ -135,9 +140,14 @@ public class GameBoard
             this.printBoard();
             
          }//end of conditional else for a valid move
+         return !turn; //return opposite if there is a valid move
       }//end of if statement for 1 - 7 inclusive
       
+      
       else
-         System.out.println("Please input a number between 1 and 7.");
+      {
+         System.out.println("Please input a number between 1 and 7. \nPlease enter a valid move.");
+         return turn;
+      }
    }
 }
