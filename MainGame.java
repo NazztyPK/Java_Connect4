@@ -36,7 +36,7 @@ class MainGame
       System.out.println("Where do you want to move?");  //ask for move
       String userString = scanner.nextLine();            //scans in user input for move
       int userInt = Integer.parseInt(userString);        //parses String into Int
-      turn = gb.inputBoard(userInt,turn);                //input user input
+      turn = gb.inputBoard(userInt,turn);                //input user input, here turn becomes the opposite of whoever just went
       
       done = checkGame(gb, done, turn);
          
@@ -50,9 +50,9 @@ class MainGame
       //Initialize player string for 1 and 2
       String player = "";
       
-      if(turn)          //if player 1, player is 1
+      if(!turn)          //if player 1, player is 1, has to !turn because it is the opposite
          player = " 1 ";
-      else              //else player 2, player is 2
+      else              //else player 2, player is 2, turn
          player = " 2 ";
       
       //Check Across
