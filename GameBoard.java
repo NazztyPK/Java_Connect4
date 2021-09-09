@@ -140,7 +140,7 @@ public class GameBoard
             this.printBoard();
             
          }//end of conditional else for a valid move
-         return !turn; //return opposite if there is a valid move
+         return !turn; //return opposite of trun if there is a valid move
       }//end of if statement for 1 - 7 inclusive
       
       
